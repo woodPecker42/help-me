@@ -13,6 +13,34 @@
         </div>
         <button class="addOption">Add</button>
       </div>
-      <button>Go!</button>
+      <div class="resultSection">
+      </div>
+      <button class="submit">Go!</button>
+
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script>
+        $(function(){ /*gör en funktion*/
+          $('.resultSection').hide()
+
+          var add_option = function() {  /*gör en funktion som lagras i add_option*/
+            $('.inputs').append('<input></input>') /*en input ska läggas till(append) i inputs divven*/
+            }
+
+          $('.addOption').click(add_option) /*när man klickar på rutan addOption ska funtionen add_option köras */
+
+          var options = []
+          var submit = function(){
+            $('.inputSection').hide()
+            $('.resultSection').css('display', 'flex')
+            $('input').each(function(){
+              options.push($(this).val())
+            })
+          var winner = options[Math.floor(Math.random() * options.length)]
+          console.log(winner)
+          $('.resultSection').text(winner)
+          }
+          $('.submit').click(submit)
+        })
+      </script>
   </body>
 </html>
